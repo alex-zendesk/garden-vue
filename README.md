@@ -33,19 +33,19 @@ components: {
 
 ### Arrows
 
--
+`No support`
 
 ### Avatars
 
--
+`No support`
 
 ### Bedrock
 
--
+`No support`
 
 ### Breadcrumbs
 
--
+`No support`
 
 ### Buttons
 
@@ -71,65 +71,77 @@ Props:
 
 ### Callouts
 
--
+`No support`
 
 ### Checkboxes, Toggles, & Radios
 
--
+`No support`
 
 ### Chrome
 
--
+`No support`
 
 ### Dropdowns
 
--
+`No support`
 
 ### Grid
 
--
+`No support`
 
 ### Menus
 
--
+`No support`
 
 ### Modals
 
--
+`No support`
 
 ### Pagination
 
--
+`No support`
 
 ### Ranges
 
--
+`No support`
 
 ### Scrollbars
 
--
+`No support`
 
 ### Tabs
 
--
+`No support`
 
 ### Tables
 
--
+`No support`
 
 ### Tags
 
--
+`No support`
 
 ### Text & Textarea
 
--
+Example:
+
+```html
+<g-text-input label="Type in me!" />
+```
+Props:
+
+| Name    | Type       | Default 
+| ------- | ---------- | -
+|label|String|
+|value|String|
+|hint|String|
+|message|String|
 
 ### Tooltips
 
--
+`No support`
 
 ### Utilities
 
--
+`No support`
 `
