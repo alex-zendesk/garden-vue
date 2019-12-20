@@ -69,6 +69,10 @@ Props:
 | state   | 'disabled', 'hovered', 'focused', 'active' |
 | disabled| Boolean                                    | false
 
+Events:
+
+`action`
+
 ### Callouts
 
 `No support`
@@ -144,4 +148,4 @@ Props:
 ### Utilities
 
 `No support`
-`
+
