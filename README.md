@@ -5,6 +5,8 @@ The Vue-fication of Zendesk Garden :-) [Garden](https://garden.zendesk.com/css-c
 
 ## Getting Started
 
+### Installation
+
 This repo should be cloned into your project root directory. If you're using one of Fabio's [awesome](https://github.com/fabioguarrasi) boilerplates, then the following script will suffice:
 ```bash
 git clone git@github.com:alex-zendesk/garden-vue.git assets/src/components/garden
@@ -31,42 +33,103 @@ components: {
 
 ### Arrows
 
+-
+
 ### Avatars
+
+-
 
 ### Bedrock
 
+-
+
 ### Breadcrumbs
+
+-
 
 ### Buttons
 
+Example:
+
+```html
+<g-button title="Click me!" />
+```
+Props:
+
+| Name    | Type       | Default 
+| ------- | ---------- | -
+| title   | String     | 
+| primary | Boolean    | false
+| pill    | Boolean    | false
+| basic   | Boolean    | false
+| danger  | Boolean    | false
+| full    | Boolean    | false
+| muted   | Boolean    | false
+| size    | 'sm', 'lg' | 
+| state   | 'disabled', 'hovered', 'focused', 'active' |
+| disabled| Boolean                                    | false
+
 ### Callouts
+
+-
 
 ### Checkboxes, Toggles, & Radios
 
+-
+
 ### Chrome
+
+-
 
 ### Dropdowns
 
+-
+
 ### Grid
+
+-
 
 ### Menus
 
+-
+
 ### Modals
+
+-
 
 ### Pagination
 
+-
+
 ### Ranges
+
+-
 
 ### Scrollbars
 
+-
+
 ### Tabs
+
+-
 
 ### Tables
 
+-
+
 ### Tags
+
+-
 
 ### Text & Textarea
 
+-
+
 ### Tooltips
 
+-
+
 ### Utilities
+
+-
+`
