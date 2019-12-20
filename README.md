@@ -1,4 +1,7 @@
-The Vue-fication of Zendesk Garden :-)
+
+# What is this?
+
+The Vue-fication of Zendesk Garden :-) [Garden](https://garden.zendesk.com/css-components/) is Zendesk's awesome CSS framework. This project is a Vue-based implementation of the framework similiar to the [React](https://garden.zendesk.com/react-components/) version.
 
 ## Getting Started
 
