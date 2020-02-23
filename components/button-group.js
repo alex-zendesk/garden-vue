@@ -1,10 +1,11 @@
+const template = `
+  <div class="l-btn-group" role="tablist">
+    <slot></slot>
+  </div>
+`;
 
 const ButtonGroup = {
-    template: `
-        <div class="l-btn-group" role="tablist">
-            <slot></slot>
-        </div>
-    `
+  template,
 };
 
 export default ButtonGroup;
