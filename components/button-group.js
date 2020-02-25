@@ -1,5 +1,5 @@
 const template = `
-  <div class="l-btn-group" role="tablist">
+  <div class="l-btn-group">
     <slot></slot>
   </div>
 `;

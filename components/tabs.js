@@ -13,6 +13,12 @@ const template = `
 
 const Tabs = {
   template,
+  props: {
+    active: {
+      type: String,
+      default: ''
+    },
+  },
   data() {
     return {
       active: Object.keys(this.$slots)[0],
@@ -21,6 +27,7 @@ const Tabs = {
   methods: {
     change(tab) {
       this.active = tab;
+      this.$emit('change', tab);
     },
   },
 };

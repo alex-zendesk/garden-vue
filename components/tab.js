@@ -12,7 +12,6 @@ const Tab = {
       default: false,
     },
   },
-  computed: {},
 };
 
 export default Tab;

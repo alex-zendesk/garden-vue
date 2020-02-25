@@ -1,5 +1,5 @@
 const template = `
-  <button :class="['c-btn', classes]" @click="$emit('action')">
+  <button :class="['c-btn', classes]" @click="$emit('click')">
     {{ title }}
     <slot></slot>
   </button>
@@ -59,11 +59,16 @@ const Button = {
       type: Boolean,
       required: false,
       default: false
-    }
+    },
+    icon: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     classes() {
       return {
+        'c-btn--icon': this.icon,
         'c-btn--primary': this.primary,
         'c-btn--pill': this.pill,
         'c-btn--basic': this.basic,
