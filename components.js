@@ -14,6 +14,7 @@ import Icon from './components/icon.js';
 import Menu from './components/menu.js';
 import MenuItem from './components/menu-item.js';
 import Modal from './components/modal.js';
+import TextArea from './components/text-area.js';
 
 const Garden = {
   'g-button': Button,
@@ -32,6 +33,7 @@ const Garden = {
   'g-menu': Menu,
   'g-menu-item': MenuItem,
   'g-modal': Modal,
+  'g-text-area': TextArea,
 };
 
 export default Garden;
