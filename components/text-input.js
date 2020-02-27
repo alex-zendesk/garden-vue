@@ -13,6 +13,7 @@ const template = `
       class="c-txt__input"
       :value="value"
       @input="$emit('input', $event.target.value)"
+      :placeholder="placeholder"
     />
     <small v-if="message" class="c-txt__message">
       <span dir="ltr">
@@ -40,7 +41,12 @@ const TextInput = {
     message: {
       type: String,
       required: false
-    }
+    },
+    placeholder: {
+      type: String,
+      default: '',
+      required: false
+    },
   },
 };
 
