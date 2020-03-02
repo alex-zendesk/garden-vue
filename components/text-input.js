@@ -1,6 +1,6 @@
 const template = `
   <div class="c-txt">
-    <label v-if="label" class="c-txt__label">
+    <label v-if="label" class="c-txt__label" :for="name">
       {{ label }}
     </label>
     <small v-if="hint" class="c-txt__hint">
@@ -9,7 +9,8 @@ const template = `
       </span>
     </small>
     <input 
-      type="text" 
+      type="text"
+      :id="name"
       class="c-txt__input"
       :value="value"
       @input="$emit('input', $event.target.value)"
@@ -30,6 +31,10 @@ const TextInput = {
       type: String,
       required: false
     },
+    name: {
+      type: String,
+      default: ''
+    },
     value: {
       type: String,
       required: false
@@ -46,8 +51,8 @@ const TextInput = {
       type: String,
       default: '',
       required: false
-    },
-  },
+    }
+  }
 };
 
 export default TextInput;

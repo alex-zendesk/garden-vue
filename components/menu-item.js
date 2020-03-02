@@ -9,9 +9,9 @@ const MenuItem = {
   props: {
     label: {
       type: String,
-      default: '',
-    },
-  },
+      default: ''
+    }
+  }
 };
 
 export default MenuItem;

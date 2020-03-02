@@ -21,8 +21,8 @@ const Toggle = {
     value: {
       type: Boolean,
       default: false
-    },
-  },
+    }
+  }
 };
 
 export default Toggle;

@@ -21,8 +21,8 @@ const Checkbox = {
     value: {
       type: Boolean,
       default: false
-    },
-  },
+    }
+  }
 };
 
 export default Checkbox;

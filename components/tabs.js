@@ -1,5 +1,5 @@
 const template = `
-  <nav class="c-tab">
+  <nav :class="['c-tab',classes]">
     <ul class="c-tab__list" role="tablist">
       <li @click="change(tab)" v-for="tab in Object.keys($slots)" :class="['c-tab__list__item', {'is-selected': active === tab}]" role="tab">
         {{ tab }}
@@ -18,18 +18,29 @@ const Tabs = {
       type: String,
       default: ''
     },
+    block: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    classes() {
+      return {
+        'c-tab--block': this.block
+      };
+    }
   },
   data() {
     return {
-      active: Object.keys(this.$slots)[0],
+      active: Object.keys(this.$slots)[0]
     };
   },
   methods: {
     change(tab) {
       this.active = tab;
       this.$emit('change', tab);
-    },
-  },
+    }
+  }
 };
 
 export default Tabs;

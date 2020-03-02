@@ -14,15 +14,13 @@ const Button = {
       required: false,
       default: false
     },
-    pill: {
-      type: Boolean,
+    type: {
+      type: String,
       required: false,
-      default: false
-    },
-    basic: {
-      type: Boolean,
-      required: false,
-      default: false
+      default: '',
+      validator(value) {
+        return ['pill', 'basic', 'muted', 'anchor'].indexOf(value) !== -1;
+      }
     },
     danger: {
       type: Boolean,
@@ -34,15 +32,10 @@ const Button = {
       required: false,
       default: false
     },
-    muted: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
     size: {
       type: String,
       required: false,
-      default: false,
+      default: '',
       validator(value) {
         return ['sm', 'lg'].indexOf(value) !== -1;
       }
@@ -50,9 +43,11 @@ const Button = {
     state: {
       type: String,
       required: false,
-      default: false,
+      default: '',
       validator(value) {
-        return ['disabled', 'hovered', 'focused', 'active'].indexOf(value) !== -1;
+        return (
+          ['disabled', 'hovered', 'focused', 'active'].indexOf(value) !== -1
+        );
       }
     },
     disabled: {
@@ -62,17 +57,18 @@ const Button = {
     },
     icon: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     classes() {
       return {
         'c-btn--icon': this.icon,
         'c-btn--primary': this.primary,
-        'c-btn--pill': this.pill,
-        'c-btn--basic': this.basic,
-        'c-btn--muted': this.muted,
+        'c-btn--pill': this.type === 'pill',
+        'c-btn--basic': this.type === 'basic',
+        'c-btn--muted': this.type === 'muted',
+        'c-btn--anchor': this.type === 'anchor',
         'c-btn--danger': this.danger,
         'c-btn--full': this.full,
         'c-btn--sm': this.size === 'sm',
@@ -83,7 +79,7 @@ const Button = {
         'is-active': this.state === 'active'
       };
     }
-  },
+  }
 };
 
 export default Button;

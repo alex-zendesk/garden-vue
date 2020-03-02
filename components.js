@@ -16,7 +16,7 @@ import MenuItem from './components/menu-item.js';
 import Modal from './components/modal.js';
 import TextArea from './components/text-area.js';
 import Callout from './components/callout.js';
-import Checkbox from "./components/checkbox.js";
+import Checkbox from './components/checkbox.js';
 
 const Garden = {
   'g-button': Button,
@@ -37,7 +37,7 @@ const Garden = {
   'g-modal': Modal,
   'g-text-area': TextArea,
   'g-callout': Callout,
-  'g-checkbox': Checkbox,
+  'g-checkbox': Checkbox
 };
 
 export default Garden;
