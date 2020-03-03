@@ -13,13 +13,13 @@ const TextArea = {
   props: {
     label: {
       type: String,
-      default: '',
+      default: ''
     },
     name: {
       type: String,
-      default: '',
-    },
-  },
+      default: ''
+    }
+  }
 };
 
 export default TextArea;

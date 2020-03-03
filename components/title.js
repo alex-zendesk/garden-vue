@@ -5,33 +5,29 @@ const template = `
 const Title = {
   template,
   props: {
-    small: {
-      type: Boolean,
-      default: false,
-    },
-    medium: {
-      type: Boolean,
-      default: false,
-    },
-    large: {
-      type: Boolean,
-      default: false,
+    size: {
+      type: String,
+      required: false,
+      default: '',
+      validator(value) {
+        return ['sm', 'md', 'lg'].indexOf(value) !== -1;
+      }
     },
     bold: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     classes() {
       return {
-        'u-fs-sm': this.small,
-        'u-fs-md': this.medium,
-        'u-fs-lg': this.large,
-        'u-semibold': this.bold,
+        'u-fs-sm': this.size === 'sm',
+        'u-fs-md': this.size === 'md',
+        'u-fs-lg': this.size === 'lg',
+        'u-semibold': this.bold
       };
     }
-  },
+  }
 };
 
 export default Title;

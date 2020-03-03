@@ -5,7 +5,7 @@ const template = `
 `;
 
 const ButtonGroup = {
-  template,
+  template
 };
 
 export default ButtonGroup;

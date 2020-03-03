@@ -1,5 +1,5 @@
 const template = `
-  <div class="c-tooltip c-tooltip--light" :class="this.classes">
+  <div class="c-tooltip" :class="classes">
     <slot></slot>
   </div>
 `;
@@ -7,33 +7,41 @@ const template = `
 const Tooltip = {
   template,
   props: {
-    top: {
+    light: {
       type: Boolean,
-      default: false,
+      default: true
     },
-    bottom: {
-      type: Boolean,
-      default: false,
+    position: {
+      type: String,
+      required: false,
+      default: '',
+      validator(value) {
+        return ['top', 'bottom', 'left', 'right'].indexOf(value) !== -1;
+      }
     },
-    left: {
-      type: Boolean,
-      default: false,
-    },
-    right: {
-      type: Boolean,
-      default: false,
-    },
+    size: {
+      type: String,
+      required: false,
+      default: '',
+      validator(value) {
+        return ['md', 'lg', 'xl'].indexOf(value) !== -1;
+      }
+    }
   },
   computed: {
     classes() {
       return {
-        'c-arrow c-arrow--t': this.top,
-        'c-arrow c-arrow--b': this.bottom,
-        'c-arrow c-arrow--l': this.left,
-        'c-arrow c-arrow--r': this.right,
+        'c-tooltip--light': this.light,
+        'c-arrow c-arrow--t': this.position === 'top',
+        'c-arrow c-arrow--b': this.position === 'bottom',
+        'c-arrow c-arrow--l': this.position === 'left',
+        'c-arrow c-arrow--r': this.position === 'right',
+        'c-tooltip--medium': this.size === 'md',
+        'c-tooltip--large': this.size === 'lg',
+        'c-tooltip--extra-large': this.size === 'xl'
       };
-    },
-  },
+    }
+  }
 };
 
 export default Tooltip;

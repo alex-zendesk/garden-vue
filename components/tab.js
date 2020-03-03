@@ -9,9 +9,9 @@ const Tab = {
   props: {
     active: {
       type: Boolean,
-      default: false,
-    },
-  },
+      default: false
+    }
+  }
 };
 
 export default Tab;
