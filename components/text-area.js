@@ -3,8 +3,7 @@ const template = `
     <label class="c-txt__label" :for="name">
       {{ label }}
     </label>
-    <textarea class="c-txt__input c-txt__input--area" :id="name" @input="$emit('input', $event.target.value)">
-    </textarea>
+    <textarea class="c-txt__input c-txt__input--area" :id="name" :value="value" @input="$emit('input', $event.target.value)"></textarea>
   </div>
 `;
 
@@ -18,6 +17,10 @@ const TextArea = {
     name: {
       type: String,
       default: ''
+    },
+    value: {
+      type: String,
+      default: '',
     }
   }
 };

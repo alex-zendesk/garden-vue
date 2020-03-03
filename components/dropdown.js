@@ -10,11 +10,11 @@ const template = `
     </div>
     <div class="menu-container u-1/1">
       <ul :aria-hidden="!expanded" class="c-menu c-menu--down">
-        <li v-if="allowEmpty" class="c-menu__item" @click="change('')">
+        <li v-if="allowEmpty" class="c-menu__item" @click="change({label: emptyLabel, value: ''})">
             <span dir="ltr">{{ emptyLabel }}</span>
         </li>
-        <li v-for="(dropdownOption,index) in options" :key="index" :class="['c-menu__item', {'is-checked': dropdownOption.value === value}]" @click="change(dropdownOption)">
-          <span dir="ltr">{{ dropdownOption.label }}</span>
+        <li v-for="(option, index) in options" :key="index" :class="['c-menu__item', {'is-checked': option.value === value}]" @click="change(option)">
+          <span dir="ltr">{{ option.label }}</span>
         </li>
       </ul>
     </div>
@@ -56,19 +56,22 @@ const Dropdown = {
   },
   computed: {
     valueLabel() {
-      return (
-        this.options.filter((option) => option.value === this.value)[0] ||
-        this.emptyLabel
-      );
-    }
+      const match = this.options.filter(option => option.value === this.value);
+
+      if (match.length) {
+        return match[0].label;
+      }
+
+      return this.emptyLabel;
+    },
   },
   methods: {
-    change(value) {
+    change(option) {
       this.expanded = false;
 
-      this.value = value;
+      this.value = option.value;
 
-      this.$emit('change', value);
+      this.$emit('change', option);
     }
   }
 };
