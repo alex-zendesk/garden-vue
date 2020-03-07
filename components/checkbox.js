@@ -1,6 +1,6 @@
 const template = `
   <div class="c-chk">
-    <input class="c-chk__input" :id="name" type="checkbox" :checked="value" @change="$emit('input', $event.target.checked)" />
+    <input class="c-chk__input" :id="name" type="checkbox" :disabled="disabled===true" :checked="value" @change="change" />
     <label class="c-chk__label" :class="classes" :for="name">
       <span dir="ltr">{{ label }}</span>
     </label>
@@ -53,12 +53,20 @@ const Checkbox = {
       type: String,
       default: ''
     },
-    type: {
+    messageStatus: {
       type: String,
       default: '',
       validator(value) {
         return ['success', 'error', 'warning'].includes(value);
       }
+    },
+    group: {
+      type: Boolean,
+      defalt: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -66,7 +74,8 @@ const Checkbox = {
       return {
         [`c-chk__label--${this.variant}`]: this.variant,
         'is-checked': this.value,
-        'is-hidden': this.hidden
+        'is-hidden': this.hidden,
+        'chk__label--regular': this.group
       };
     },
     hintClasses() {
@@ -77,8 +86,16 @@ const Checkbox = {
     messageClasses() {
       return {
         [`c-chk__message--${this.variant}`]: this.variant,
-        [`c-chk__message--${this.type}`]: this.type
+        [`c-chk__message--${this.messageStatus}`]: this.messageStatus
       };
+    }
+  },
+  methods: {
+    change() {
+      if (!this.disabled) {
+        this.value = !this.value;
+        this.$emit('input', this.value);
+      }
     }
   }
 };

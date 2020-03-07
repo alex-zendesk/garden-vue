@@ -18,7 +18,7 @@ import TextArea from './components/text-area.js';
 import Callout from './components/callout.js';
 import Checkbox from './components/checkbox.js';
 import Breadcrumb from './components/breadcrumb.js';
-import BreadcrumbItem from './components/breadcrumbItem.js';
+import BreadcrumbItem from './components/breadcrumb-item.js';
 import Tag from './components/tag.js';
 
 const Garden = {
