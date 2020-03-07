@@ -1,5 +1,7 @@
 const template = `
-  <p :class="classes"><slot></slot></p>
+  <p :class="classes">
+    <slot></slot>
+  </p>
 `;
 
 const Title = {
@@ -10,21 +12,14 @@ const Title = {
       required: false,
       default: '',
       validator(value) {
-        return ['sm', 'md', 'lg'].indexOf(value) !== -1;
+        return ['sm', 'md', 'lg'].includes(value);
       }
-    },
-    bold: {
-      type: Boolean,
-      default: false
     }
   },
   computed: {
     classes() {
       return {
-        'u-fs-sm': this.size === 'sm',
-        'u-fs-md': this.size === 'md',
-        'u-fs-lg': this.size === 'lg',
-        'u-semibold': this.bold
+        [`c-btn--${size}`]: this.size
       };
     }
   }

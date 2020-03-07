@@ -1,5 +1,5 @@
 const template = `
-  <table :class="['c-table',classes]">
+  <table class="c-table" :class="classes">
     <thead>
       <tr class="c-table__row c-table__row--header">
         <slot name="head"></slot>
@@ -18,14 +18,13 @@ const Table = {
     required: false,
     default: '',
     validator(value) {
-      return ['sm', 'lg'].indexOf(value) !== -1;
+      return ['sm', 'lg'].includes(value);
     }
   },
   computed: {
     classes() {
       return {
-        'c-table--sm': this.size === 'sm',
-        'c-table--lg': this.size === 'lg'
+        [`c-btn--${size}`]: this.size
       };
     }
   }

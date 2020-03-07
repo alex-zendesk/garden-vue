@@ -1,6 +1,5 @@
 const template = `
-  <button :class="['c-btn', classes]" @click="$emit('click')">
-    {{ title }}
+  <button class="c-btn" :class="classes" @click="clickEvent">
     <slot></slot>
   </button>
 `;
@@ -8,18 +7,17 @@ const template = `
 const Button = {
   template,
   props: {
-    title: String,
     primary: {
       type: Boolean,
       required: false,
       default: false
     },
-    type: {
+    variant: {
       type: String,
       required: false,
-      default: '',
+      default: 'basic',
       validator(value) {
-        return ['pill', 'basic', 'muted', 'anchor'].indexOf(value) !== -1;
+        return ['pill', 'basic', 'muted', 'anchor'].includes(value);
       }
     },
     danger: {
@@ -37,7 +35,7 @@ const Button = {
       required: false,
       default: '',
       validator(value) {
-        return ['sm', 'lg'].indexOf(value) !== -1;
+        return ['sm', 'lg'].includes(value);
       }
     },
     state: {
@@ -45,9 +43,7 @@ const Button = {
       required: false,
       default: '',
       validator(value) {
-        return (
-          ['disabled', 'hovered', 'focused', 'active'].indexOf(value) !== -1
-        );
+        return ['disabled', 'hovered', 'focused', 'active'].includes(value);
       }
     },
     disabled: {
@@ -65,19 +61,20 @@ const Button = {
       return {
         'c-btn--icon': this.icon,
         'c-btn--primary': this.primary,
-        'c-btn--pill': this.type === 'pill',
-        'c-btn--basic': this.type === 'basic',
-        'c-btn--muted': this.type === 'muted',
-        'c-btn--anchor': this.type === 'anchor',
+        [`c-btn--${this.variant}`]: this.variant,
         'c-btn--danger': this.danger,
         'c-btn--full': this.full,
-        'c-btn--sm': this.size === 'sm',
-        'c-btn--lg': this.size === 'lg',
+        [`c-btn--${this.size}`]: this.size,
         'is-disabled': this.disabled || this.state === 'disabled',
-        'is-focused': this.state === 'focused',
-        'is-hovered': this.state === 'hovered',
-        'is-active': this.state === 'active'
+        [`c-btn--${this.state}`]: this.state
       };
+    }
+  },
+  methods: {
+    clickEvent() {
+      if (!this.disabled) {
+        this.$emit('click');
+      }
     }
   }
 };

@@ -3,7 +3,11 @@ const template = `
     <section class="c-dialog" :class="classes" role="dialog">
       <header>
         <h1 class="c-dialog__header">{{ title }}</h1>
-        <button aria-label="close" class="c-dialog__close" @click="$emit('destroy')"></button>
+        <button 
+        aria-label="close" 
+        class="c-dialog__close" 
+        @click="close">
+        </button>
       </header>
       <div class="c-dialog__body">
         <slot name="body"></slot>
@@ -36,6 +40,12 @@ const Modal = {
       return {
         'c-dialog--large': this.large
       };
+    }
+  },
+  methods: {
+    close() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
     }
   }
 };

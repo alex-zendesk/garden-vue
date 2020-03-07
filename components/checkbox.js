@@ -1,15 +1,34 @@
 const template = `
   <div class="c-chk">
     <input class="c-chk__input" :id="name" type="checkbox" :checked="value" @change="$emit('input', $event.target.checked)" />
-    <label class="c-chk__label" :class="{'is-checked': value}" :for="name">
+    <label class="c-chk__label" :class="classes" :for="name">
       <span dir="ltr">{{ label }}</span>
     </label>
+    <small v-if="hint" class="c-chk__hint" :class="hintClasses">
+      <span dir="ltr">
+        {{ hint }}
+      </span>
+    </small>
+    <slot v-else name="hint"></slot>
+    <small v-if="message" class="c-chk__message" :class="messageClasses">
+      <span dir="ltr">
+        {{ message }}
+      </span>
+    </small>
+    <slot v-else name="message"></slot>
   </div>
 `;
 
 const Checkbox = {
   template,
   props: {
+    variant: {
+      type: String,
+      default: '',
+      validator(value) {
+        return ['toggle', 'radio'].includes(value);
+      }
+    },
     label: {
       type: String,
       default: ''
@@ -21,6 +40,45 @@ const Checkbox = {
     value: {
       type: Boolean,
       default: false
+    },
+    hidden: {
+      type: Boolean,
+      default: false
+    },
+    hint: {
+      type: String,
+      default: ''
+    },
+    message: {
+      type: String,
+      default: ''
+    },
+    type: {
+      type: String,
+      default: '',
+      validator(value) {
+        return ['success', 'error', 'warning'].includes(value);
+      }
+    }
+  },
+  computed: {
+    classes() {
+      return {
+        [`c-chk__label--${this.variant}`]: this.variant,
+        'is-checked': this.value,
+        'is-hidden': this.hidden
+      };
+    },
+    hintClasses() {
+      return {
+        [`c-chk__hint--${this.variant}`]: this.variant
+      };
+    },
+    messageClasses() {
+      return {
+        [`c-chk__message--${this.variant}`]: this.variant,
+        [`c-chk__message--${this.type}`]: this.type
+      };
     }
   }
 };

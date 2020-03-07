@@ -17,7 +17,8 @@ import Modal from './components/modal.js';
 import TextArea from './components/text-area.js';
 import Callout from './components/callout.js';
 import Checkbox from './components/checkbox.js';
-import Breadcrumbs from './components/breadcrumbs.js';
+import Breadcrumb from './components/breadcrumb.js';
+import BreadcrumbItem from './components/breadcrumbItem.js';
 import Tag from './components/tag.js';
 
 const Garden = {
@@ -40,7 +41,8 @@ const Garden = {
   'g-text-area': TextArea,
   'g-callout': Callout,
   'g-checkbox': Checkbox,
-  'g-breadcrumbs': Breadcrumbs,
+  'g-breadcrumb': Breadcrumb,
+  'g-breacrumb-item': BreadcrumbItem,
   'g-tag': Tag
 };
 

@@ -18,17 +18,14 @@ const Menu = {
       required: false,
       default: '',
       validator(value) {
-        return ['down', 'left', 'up', 'right'].indexOf(value) !== -1;
+        return ['down', 'left', 'up', 'right'].includes(value);
       }
     }
   },
   computed: {
     classes() {
       return {
-        'c-menu--up': this.position === 'up',
-        'c-menu--down': this.position === 'down',
-        'c-menu--left': this.position === 'left',
-        'c-menu--right': this.position === 'right',
+        [`c-btn--${position}`]: this.position,
         'is-open': this.open
       };
     }
