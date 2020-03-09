@@ -1,11 +1,11 @@
 const template = `
   <li class="c-menu__item" :class="classes" role="menuitem" @click="$emit('click')">
-    <template v-if="separator===false">
+    <template v-if="separator">
       
     </template>
     <template v-else>
       <slot></slot>
-      <span v-if="meta===true" class="c-menu__item__meta" dir="ltr">
+      <span v-if="meta" class="c-menu__item__meta" dir="ltr">
         <slot name="meta-text"></slot>
       </span>
       </template>

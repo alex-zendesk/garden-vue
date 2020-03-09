@@ -1,6 +1,6 @@
 const template = `
   <div class="c-chk">
-    <input class="c-chk__input" :id="name" type="checkbox" :disabled="disabled===true" :checked="value" @change="change" />
+    <input class="c-chk__input" :id="name" type="checkbox" :disabled="disabled" :checked="value" @change="change" />
     <label class="c-chk__label" :class="classes" :for="name">
       <span dir="ltr">{{ label }}</span>
     </label>
@@ -92,10 +92,8 @@ const Checkbox = {
   },
   methods: {
     change() {
-      if (!this.disabled) {
         this.value = !this.value;
         this.$emit('input', this.value);
-      }
     }
   }
 };

@@ -1,5 +1,5 @@
 const template = `
-<ul class="c-menu" :class="classes" role="menu" :arria-hidden="open===false">
+<ul class="c-menu" :class="classes" role="menu" :arria-hidden="!open">
   <slot></slot>
 </ul>
 `;

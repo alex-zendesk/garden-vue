@@ -1,9 +1,9 @@
 const template = `
 <li class="c-breadcrumb__item" :class="classes">
-    <a v-if="!current" :href="href">
-      <slot></slot>
-    </a> 
-    <slot v-else></slot>
+  <a v-if="!current" :href="href">
+    <slot></slot>
+  </a> 
+  <slot v-else></slot>
 </li>
 `;
 
@@ -16,7 +16,7 @@ const BreadcrumbItem = {
     },
     href: {
       type: String,
-      default: '#'
+      default: 'javascript:void(0);'
     }
   },
   computed: {
