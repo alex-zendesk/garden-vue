@@ -4,7 +4,7 @@ const template = `
       <label v-if="label" class="c-txt__label" :for="name">
         {{ label }}
       </label>
-      <button class="c-txt__input c-txt__input--select" :id="name" @click="expanded = !expanded">
+      <button class="c-txt__input c-txt__input--select" :disabled="disabled" :id="name" @click="expanded = !expanded">
         <span dir="ltr">{{ valueLabel }}</span>
       </button>
     </div>
@@ -47,7 +47,11 @@ const Dropdown = {
     emptyLabel: {
       type: String,
       default: '-'
-    }
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
   },
   data() {
     return {
