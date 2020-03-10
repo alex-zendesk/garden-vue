@@ -4,7 +4,7 @@ const template = `
       <label v-if="label" class="c-txt__label" :for="name">
         {{ label }}
       </label>
-      <button class="c-txt__input c-txt__input--select" :disabled="disabled" :id="name" @click="expanded = !expanded">
+      <button class="c-txt__input c-txt__input--select" :disabled="disabled" :id="name" @click="toggle">
         <span dir="ltr">{{ valueLabel }}</span>
       </button>
     </div>
@@ -73,10 +73,24 @@ const Dropdown = {
     change(option) {
       this.expanded = false;
 
+      this.$root.$emit('g-dropdown-close');
+
       this.value = option.value;
 
       this.$emit('change', option);
+    },
+    toggle() {
+      this.expanded = !this.expanded;
+
+      this.$root.$emit('g-dropdown-close', this.name);
     }
+  },
+  mounted() {
+    this.$root.$on('g-dropdown-close', name => {
+      if (name !== this.name) {
+        this.expanded = false;
+      }
+    });
   }
 };
 
