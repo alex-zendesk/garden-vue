@@ -32,13 +32,8 @@ const Tooltip = {
     classes() {
       return {
         'c-tooltip--light': this.light,
-        'c-arrow c-arrow--t': this.position === 'top',
-        'c-arrow c-arrow--b': this.position === 'bottom',
-        'c-arrow c-arrow--l': this.position === 'left',
-        'c-arrow c-arrow--r': this.position === 'right',
-        'c-tooltip--medium': this.size === 'md',
-        'c-tooltip--large': this.size === 'lg',
-        'c-tooltip--extra-large': this.size === 'xl'
+        [`c-btn--${position}`]: this.position,
+        [`c-btn--${size}`]: this.size
       };
     }
   }
