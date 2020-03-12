@@ -12,14 +12,14 @@ const Title = {
       required: false,
       default: '',
       validator(value) {
-        return ['sm', 'md', 'lg'].includes(value);
+        return ['sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'].includes(value);
       }
     }
   },
   computed: {
     classes() {
       return {
-        [`c-btn--${size}`]: this.size
+        [`u-fs-${size}`]: this.size
       };
     }
   }

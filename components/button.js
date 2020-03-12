@@ -1,5 +1,9 @@
 const template = `
-  <button class="c-btn" :class="classes" @click="clickEvent">
+  <button 
+  class="c-btn" 
+  :class="classes" 
+  :disabled="disabled" 
+  @click="$emit('click')">
     <slot></slot>
   </button>
 `;
@@ -15,7 +19,7 @@ const Button = {
     variant: {
       type: String,
       required: false,
-      default: 'basic',
+      default: '',
       validator(value) {
         return ['pill', 'basic', 'muted', 'anchor'].includes(value);
       }
@@ -68,13 +72,6 @@ const Button = {
         'is-disabled': this.disabled || this.state === 'disabled',
         [`c-btn--${this.state}`]: this.state
       };
-    }
-  },
-  methods: {
-    clickEvent() {
-      if (!this.disabled) {
-        this.$emit('click');
-      }
     }
   }
 };

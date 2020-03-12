@@ -75,7 +75,7 @@ const Checkbox = {
         [`c-chk__label--${this.variant}`]: this.variant,
         'is-checked': this.value,
         'is-hidden': this.hidden,
-        'chk__label--regular': this.group
+        'c-chk__label--regular': this.group
       };
     },
     hintClasses() {
@@ -92,8 +92,8 @@ const Checkbox = {
   },
   methods: {
     change() {
-        this.value = !this.value;
-        this.$emit('input', this.value);
+      this.value = !this.value;
+      this.$emit('input', this.value);
     }
   }
 };

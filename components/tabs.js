@@ -1,7 +1,12 @@
 const template = `
-  <nav :class="['c-tab',classes]">
+  <nav class="c-tab" :class="classes">
     <ul class="c-tab__list" role="tablist">
-      <li @click="change(tab)" v-for="tab in Object.keys($slots)" :class="['c-tab__list__item', {'is-selected': active === tab}]" role="tab">
+      <li @click="change(tab)" 
+      v-for="tab in Object.keys($slots)"
+      :key="tab"
+      class="c-tab__list__item" 
+      :class="[{'is-selected':active===tab},listClasses]" 
+      role="tab">
         {{ tab }}
       </li>
     </ul>
@@ -14,11 +19,11 @@ const template = `
 const Tabs = {
   template,
   props: {
-    active: {
-      type: String,
-      default: ''
-    },
     block: {
+      type: Boolean,
+      default: false
+    },
+    full: {
       type: Boolean,
       default: false
     }
@@ -27,6 +32,12 @@ const Tabs = {
     classes() {
       return {
         'c-tab--block': this.block
+      };
+    },
+    listClasses() {
+      return {
+        [`u-1/${Object.keys(this.$slots).length}`]:
+          !this.block && this.full && Object.keys(this.$slots).length
       };
     }
   },
