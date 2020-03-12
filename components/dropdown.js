@@ -2,6 +2,7 @@ const template = `
   <fieldset class="u-position-relative">
     <div class="c-txt">
       <label v-if="label" class="c-txt__label" :for="name">
+        <g-icon v-if="iconLabel" :icon="iconLabel" />
         {{ label }}
       </label>
       <button class="c-txt__input c-txt__input--select" :disabled="disabled" :id="name" @click="toggle">
@@ -25,6 +26,10 @@ const Dropdown = {
   template,
   props: {
     name: {
+      type: String,
+      default: ''
+    },
+    iconLabel: {
       type: String,
       default: ''
     },
