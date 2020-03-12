@@ -24,7 +24,7 @@ const Table = {
   computed: {
     classes() {
       return {
-        [`c-btn--${size}`]: this.size
+        [`c-btn--${this.size}`]: this.size
       };
     }
   }

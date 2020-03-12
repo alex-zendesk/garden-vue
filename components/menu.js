@@ -1,7 +1,9 @@
 const template = `
-<ul class="c-menu" :class="classes" role="menu" :arria-hidden="!open">
-  <slot></slot>
-</ul>
+  <div class="menu-container u-1/1" v-show="open">
+    <ul class="c-menu" :class="classes" role="menu">
+      <slot></slot>
+    </ul>
+  </div>
 `;
 
 const Menu = {

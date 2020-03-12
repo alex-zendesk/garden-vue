@@ -32,8 +32,8 @@ const Tooltip = {
     classes() {
       return {
         'c-tooltip--light': this.light,
-        [`c-btn--${position}`]: this.position,
-        [`c-btn--${size}`]: this.size
+        [`c-btn--${this.position}`]: this.position,
+        [`c-btn--${this.size}`]: this.size
       };
     }
   }

@@ -1,5 +1,6 @@
 const template = `
   <button class="c-btn" :class="classes" @click="clickEvent">
+    {{ title }}
     <slot></slot>
   </button>
 `;
@@ -7,6 +8,10 @@ const template = `
 const Button = {
   template,
   props: {
+    title: {
+      type: String,
+      default: ''
+    },
     primary: {
       type: Boolean,
       required: false,
@@ -15,7 +20,7 @@ const Button = {
     variant: {
       type: String,
       required: false,
-      default: 'basic',
+      default: '',
       validator(value) {
         return ['pill', 'basic', 'muted', 'anchor'].includes(value);
       }
