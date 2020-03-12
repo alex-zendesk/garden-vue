@@ -1,10 +1,11 @@
 const template = `
   <div class="c-callout" :class="classes">
-    <button v-show="canClose" class="c-callout__close" @click="$emit('destroy')"></button>
-    <strong v-show="title.length" class="c-callout__title">
+    <button v-show="canClose" class="c-callout__close" @click="close"></button>
+    <strong v-if="title" class="c-callout__title">
         <span dir="ltr">{{ title }}</span>
     </strong>
-    <p v-show="message.length" class="c-callout__paragraph">{{ message }}</p>
+    <p v-if="message" class="c-callout__paragraph">{{ message }}</p>
+    <slot v-else name="message"></slot>
   </div>
 `;
 
@@ -15,12 +16,18 @@ const Callout = {
       type: Boolean,
       default: false
     },
+    dialog: {
+      type: Boolean,
+      default: false
+    },
     type: {
       type: String,
       required: false,
       default: '',
       validator(value) {
-        return ['success', 'warning', 'error', 'info'].indexOf(value) !== -1;
+        return ['success', 'warning', 'error', 'info', 'recessed'].includes(
+          value
+        );
       }
     },
     title: {
@@ -35,11 +42,15 @@ const Callout = {
   computed: {
     classes() {
       return {
-        'c-callout--error': this.type === 'error',
-        'c-callout--success': this.type === 'success',
-        'c-callout--warning': this.type === 'warning',
-        'c-callout--info': this.type === 'info'
+        'c-callout--dialog': this.dialog,
+        [`c-callout--${this.type}`]: this.type
       };
+    }
+  },
+  methods: {
+    close() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
     }
   }
 };

@@ -1,9 +1,7 @@
 const template = `
-  <div class="menu-container u-1/1" v-show="open">
-    <ul class="c-menu" :class="classes" role="menu">
-      <slot></slot>
-    </ul>
-  </div>
+<ul class="c-menu" :class="classes" role="menu" :arria-hidden="!open">
+  <slot></slot>
+</ul>
 `;
 
 const Menu = {
@@ -18,18 +16,23 @@ const Menu = {
       required: false,
       default: '',
       validator(value) {
-        return ['down', 'left', 'up', 'right'].indexOf(value) !== -1;
+        return ['down', 'left', 'up', 'right'].includes(value);
+      }
+    },
+    size: {
+      type: String,
+      default: '',
+      validator(value) {
+        return ['sm'].includes(value);
       }
     }
   },
   computed: {
     classes() {
       return {
-        'c-menu--up': this.position === 'up',
-        'c-menu--down': this.position === 'down',
-        'c-menu--left': this.position === 'left',
-        'c-menu--right': this.position === 'right',
-        'is-open': this.open
+        'is-open': this.open,
+        [`c-menu--${this.position}`]: this.position,
+        [`c-menu--${this.size}`]: this.size
       };
     }
   }

@@ -2,8 +2,12 @@ const template = `
   <div class="l-backdrop l-backdrop--center" v-show="open">
     <section class="c-dialog" :class="classes" role="dialog">
       <header>
-        <h1 class="c-dialog__header">{{ title }}</h1>
-        <button aria-label="close" class="c-dialog__close" @click="$emit('destroy')"></button>
+        <h1 class="c-dialog__header" :class="headerClasses">{{ title }}</h1>
+        <button 
+        aria-label="close" 
+        class="c-dialog__close" 
+        @click="close">
+        </button>
       </header>
       <div class="c-dialog__body">
         <slot name="body"></slot>
@@ -29,6 +33,10 @@ const Modal = {
     large: {
       type: Boolean,
       default: true
+    },
+    danger: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -36,6 +44,17 @@ const Modal = {
       return {
         'c-dialog--large': this.large
       };
+    },
+    headerClasses() {
+      return {
+        'c-dialog__header--danger': this.danger
+      };
+    }
+  },
+  methods: {
+    close() {
+      this.$destroy();
+      this.$el.parentNode.removeChild(this.$el);
     }
   }
 };
