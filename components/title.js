@@ -1,7 +1,5 @@
 const template = `
-  <p :class="classes">
-    <slot></slot>
-  </p>
+  <p :class="classes"><slot></slot></p>
 `;
 
 const Title = {
@@ -14,12 +12,17 @@ const Title = {
       validator(value) {
         return ['sm', 'md', 'lg', 'xl', 'xxl', 'xxxl'].includes(value);
       }
+    },
+    bold: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     classes() {
       return {
-        [`u-fs-${size}`]: this.size
+        [`u-fs-${this.size}`]: this.size,
+        'u-semibold': this.bold
       };
     }
   }

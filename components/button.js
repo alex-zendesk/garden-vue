@@ -11,6 +11,10 @@ const template = `
 const Button = {
   template,
   props: {
+    title: {
+      type: String,
+      default: ''
+    },
     primary: {
       type: Boolean,
       required: false,
