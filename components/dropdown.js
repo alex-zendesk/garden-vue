@@ -88,6 +88,8 @@ const Dropdown = {
       this.expanded = !this.expanded;
 
       this.$root.$emit('g-dropdown-close', this.name);
+
+      this.$emit('open');
     }
   },
   mounted() {
