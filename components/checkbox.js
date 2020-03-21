@@ -1,6 +1,6 @@
 const template = `
   <div class="c-chk">
-    <input class="c-chk__input" :id="name" type="checkbox" :disabled="disabled" :checked="value" @change="change" />
+    <input class="c-chk__input" :id="name" type="checkbox" :disabled="disabled" :checked="checked" @change="change" />
     <label class="c-chk__label" :class="classes" :for="name">
       <span dir="ltr">{{ label }}</span>
     </label>
@@ -35,9 +35,9 @@ const Checkbox = {
     },
     name: {
       type: String,
-      default: ''
+      required: true
     },
-    value: {
+    checked: {
       type: Boolean,
       default: false
     },
@@ -73,9 +73,9 @@ const Checkbox = {
     classes() {
       return {
         [`c-chk__label--${this.variant}`]: this.variant,
-        'is-checked': this.value,
+        'is-checked': this.checked,
         'is-hidden': this.hidden,
-        'chk__label--regular': this.group
+        'c-chk__label--regular': this.group
       };
     },
     hintClasses() {
@@ -92,8 +92,8 @@ const Checkbox = {
   },
   methods: {
     change() {
-        this.value = !this.value;
-        this.$emit('input', this.value);
+      this.checked = !this.checked;
+      this.$emit('input', this.checked);
     }
   }
 };

@@ -1,6 +1,19 @@
 const template = `
   <div class="c-tooltip" :class="classes">
-    <slot></slot>
+    <template v-if="checkSize">
+      <strong  class="c-tooltip__title">
+        <span dir="ltr">
+          <slot name="title"></slot>
+        </span>
+      </strong>
+      <p class="c-tooltip__paragraph">
+        <slot name="paragraph"></slot>
+      </p>
+      <slot></slot>
+    </template>
+    <span v-else>
+      <slot></slot>
+    </span>
   </div>
 `;
 
@@ -16,7 +29,7 @@ const Tooltip = {
       required: false,
       default: '',
       validator(value) {
-        return ['top', 'bottom', 'left', 'right'].indexOf(value) !== -1;
+        return ['top', 'bottom', 'left', 'right'].includes(value);
       }
     },
     size: {
@@ -24,7 +37,7 @@ const Tooltip = {
       required: false,
       default: '',
       validator(value) {
-        return ['md', 'lg', 'xl'].indexOf(value) !== -1;
+        return ['medium', 'large', 'extra-large'].includes(value);
       }
     }
   },
@@ -32,9 +45,12 @@ const Tooltip = {
     classes() {
       return {
         'c-tooltip--light': this.light,
-        [`c-btn--${this.position}`]: this.position,
-        [`c-btn--${this.size}`]: this.size
+        [`c-tooltip--${this.position}`]: this.position,
+        [`c-tooltip--${this.size}`]: this.size
       };
+    },
+    checkSize() {
+      return this.size === 'large' || this.size === 'extra-large';
     }
   }
 };

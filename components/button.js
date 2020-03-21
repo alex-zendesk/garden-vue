@@ -1,6 +1,9 @@
 const template = `
-  <button class="c-btn" :class="classes" @click="clickEvent">
-    {{ title }}
+  <button 
+  class="c-btn" 
+  :class="classes" 
+  :disabled="disabled" 
+  @click="$emit('click')">
     <slot></slot>
   </button>
 `;
@@ -8,18 +11,12 @@ const template = `
 const Button = {
   template,
   props: {
-    title: {
-      type: String,
-      default: ''
-    },
     primary: {
       type: Boolean,
-      required: false,
       default: false
     },
     variant: {
       type: String,
-      required: false,
       default: '',
       validator(value) {
         return ['pill', 'basic', 'muted', 'anchor'].includes(value);
@@ -27,17 +24,14 @@ const Button = {
     },
     danger: {
       type: Boolean,
-      required: false,
       default: false
     },
     full: {
       type: Boolean,
-      required: false,
       default: false
     },
     size: {
       type: String,
-      required: false,
       default: '',
       validator(value) {
         return ['sm', 'lg'].includes(value);
@@ -53,7 +47,6 @@ const Button = {
     },
     disabled: {
       type: Boolean,
-      required: false,
       default: false
     },
     icon: {
@@ -73,13 +66,6 @@ const Button = {
         'is-disabled': this.disabled || this.state === 'disabled',
         [`c-btn--${this.state}`]: this.state
       };
-    }
-  },
-  methods: {
-    clickEvent() {
-      if (!this.disabled) {
-        this.$emit('click');
-      }
     }
   }
 };

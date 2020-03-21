@@ -22,7 +22,6 @@ const Callout = {
     },
     type: {
       type: String,
-      required: false,
       default: '',
       validator(value) {
         return ['success', 'warning', 'error', 'info', 'recessed'].includes(

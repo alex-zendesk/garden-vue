@@ -1,11 +1,14 @@
 const template = `
 <div class="c-tag" :class="classes" :title="title">
-  <span>{{title}}</span>
+  <span>{{ title }}</span>
   <div v-show="canClose" class="u-visibility-screenreader">
-    Press delete to remove this tag.
+    {{ canCloseTitle }}
   </div>
-  <button v-show="canClose" @click="close"
-  class="c-tag__remove" tabindex="-1">
+  <button 
+    v-show="canClose" 
+    @click="close"
+    class="c-tag__remove" 
+    tabindex="-1">
   </button>
 </div>
 `;
@@ -15,11 +18,15 @@ const Tag = {
   props: {
     title: {
       type: String,
-      default: ''
+      required: true
     },
     canClose: {
       type: Boolean,
       default: false
+    },
+    canCloseTitle: {
+      type: String,
+      default: 'Press delete to remove this tag.'
     },
     shape: {
       type: String,

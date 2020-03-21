@@ -1,6 +1,6 @@
 const template = `
   <svg class="c-btn__icon">
-    <use :href="'./index.svg#' + icon"></use>
+    <use :href="href"></use>
   </svg>
 `;
 
@@ -10,6 +10,11 @@ const Icon = {
     icon: {
       type: String,
       default: ''
+    }
+  },
+  computed: {
+    href() {
+      return `./index.svg#${this.icon}`;
     }
   }
 };
