@@ -1,16 +1,16 @@
 const template = `
-  <nav class="c-tab" :class="classes">
+  <nav class="c-tab" :class="classes.tab">
     <ul class="c-tab__list" role="tablist">
       <li @click="change(tab)" 
-      v-for="tab in Object.keys($slots)"
+      v-for="tab in tabNames"
       :key="tab"
       class="c-tab__list__item" 
-      :class="[{'is-selected':active===tab},listClasses]" 
+      :class="listClasses(tab)" 
       role="tab">
         {{ tab }}
       </li>
     </ul>
-    <g-tab v-for="tab in Object.keys(this.$slots)" :active="active === tab">
+    <g-tab v-for="tab in tabNames" :active="isActive(tab)">
       <slot :name="tab"></slot>
     </g-tab>
   </nav>
@@ -29,27 +29,37 @@ const Tabs = {
     }
   },
   computed: {
+    tabNames() {
+      return Object.keys(this.$slots);
+    },
     classes() {
       return {
-        'c-tab--block': this.block
-      };
-    },
-    listClasses() {
-      return {
-        [`u-1/${Object.keys(this.$slots).length}`]:
-          !this.block && this.full && Object.keys(this.$slots).length
+        tab: { 'c-tab--block': this.block },
+        list: {
+          [`u-1/${this.tabNames.length}`]:
+            !this.block && this.full && this.tabNames.length
+        }
       };
     }
   },
   data() {
     return {
-      active: Object.keys(this.$slots)[0]
+      active: this.tabNames[0]
     };
   },
   methods: {
     change(tab) {
       this.active = tab;
       this.$emit('change', tab);
+    },
+    isActive(tab) {
+      return this.active === tab;
+    },
+    listClasses(tab) {
+      return {
+        'is-selected': this.isActive(tab),
+        ...this.classes.list
+      };
     }
   }
 };

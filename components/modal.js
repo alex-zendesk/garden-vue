@@ -1,8 +1,10 @@
 const template = `
   <div class="l-backdrop l-backdrop--center" v-show="open">
-    <section class="c-dialog" :class="classes" role="dialog">
+    <section class="c-dialog" :class="classes.dialog" role="dialog">
       <header>
-        <h1 class="c-dialog__header" :class="headerClasses">{{ title }}</h1>
+        <h1 class="c-dialog__header" :class="classes.header">
+          {{ title }}
+        </h1>
         <button 
         aria-label="close" 
         class="c-dialog__close" 
@@ -42,12 +44,8 @@ const Modal = {
   computed: {
     classes() {
       return {
-        'c-dialog--large': this.large
-      };
-    },
-    headerClasses() {
-      return {
-        'c-dialog__header--danger': this.danger
+        dialog: { 'c-dialog--large': this.large },
+        header: { 'c-dialog__header--danger': this.danger }
       };
     }
   },

@@ -1,20 +1,19 @@
 const template = `
   <div class="c-tooltip" :class="classes">
-  <template v-if="checkSize">
-    <strong  class="c-tooltip__title">
-      <span dir="ltr">
-        <slot name="title"></slot>
-      </span>
-    </strong>
-    <p class="c-tooltip__paragraph">
-      <slot name="paragraph"></slot>
-    </p>
-    <slot></slot>
-  </template>
-  <span v-else>
-    <slot></slot>
-  </span>
-
+    <template v-if="checkSize">
+      <strong  class="c-tooltip__title">
+        <span dir="ltr">
+          <slot name="title"></slot>
+        </span>
+      </strong>
+      <p class="c-tooltip__paragraph">
+        <slot name="paragraph"></slot>
+      </p>
+      <slot></slot>
+    </template>
+    <span v-else>
+      <slot></slot>
+    </span>
   </div>
 `;
 

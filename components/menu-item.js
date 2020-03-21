@@ -1,14 +1,10 @@
 const template = `
   <li class="c-menu__item" :class="classes" role="menuitem" @click="$emit('click')">
-    <template v-if="separator">
-      
-    </template>
-    <template v-else>
+    <template v-if="!separator">
       <slot></slot>
       <span v-if="meta" class="c-menu__item__meta" dir="ltr">
-        <slot name="meta-text"></slot>
+        {{ meta }}
       </span>
-      </template>
     </template>
   </li>
 `;
@@ -16,10 +12,6 @@ const template = `
 const MenuItem = {
   template,
   props: {
-    label: {
-      type: String,
-      default: ''
-    },
     header: {
       type: Boolean,
       default: false
@@ -44,8 +36,8 @@ const MenuItem = {
       default: false
     },
     meta: {
-      type: Boolean,
-      default: false
+      type: String,
+      default: ''
     },
     media: {
       type: Boolean,

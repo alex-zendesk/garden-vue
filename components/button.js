@@ -11,18 +11,12 @@ const template = `
 const Button = {
   template,
   props: {
-    title: {
-      type: String,
-      default: ''
-    },
     primary: {
       type: Boolean,
-      required: false,
       default: false
     },
     variant: {
       type: String,
-      required: false,
       default: '',
       validator(value) {
         return ['pill', 'basic', 'muted', 'anchor'].includes(value);
@@ -30,17 +24,14 @@ const Button = {
     },
     danger: {
       type: Boolean,
-      required: false,
       default: false
     },
     full: {
       type: Boolean,
-      required: false,
       default: false
     },
     size: {
       type: String,
-      required: false,
       default: '',
       validator(value) {
         return ['sm', 'lg'].includes(value);
@@ -56,7 +47,6 @@ const Button = {
     },
     disabled: {
       type: Boolean,
-      required: false,
       default: false
     },
     icon: {
