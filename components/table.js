@@ -1,9 +1,10 @@
 const template = `
   <table class="c-table" :class="classes">
+    <caption v-if="caption" class="c-table__caption">{{ caption }}</caption>
     <thead>
-      <tr class="c-table__row c-table__row--header">
+      <g-table-row :header='true'>
         <slot name="head"></slot>
-      </tr>
+      </g-table-row>
     </thead>
     <tbody>
       <slot name="body"></slot>
@@ -13,14 +14,21 @@ const template = `
 
 const Table = {
   template,
-  size: {
-    type: String,
-    required: false,
-    default: '',
-    validator(value) {
-      return ['sm', 'lg'].includes(value);
+  props: {
+    size: {
+      type: String,
+      required: false,
+      default: '',
+      validator(value) {
+        return ['sm', 'lg'].includes(value);
+      }
+    },
+    caption: {
+      type: String,
+      default: ''
     }
   },
+
   computed: {
     classes() {
       return {

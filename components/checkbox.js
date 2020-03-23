@@ -1,20 +1,12 @@
 const template = `
   <div class="c-chk">
-    <input class="c-chk__input" :id="name" type="checkbox" :disabled="disabled" :checked="checked" @change="change" />
+    <input class="c-chk__input" :id="name" :type="variantType" :disabled="disabled" :checked="checked" @change="change" />
     <label class="c-chk__label" :class="classes" :for="name">
       <span dir="ltr">{{ label }}</span>
     </label>
-    <small v-if="hint" class="c-chk__hint" :class="hintClasses">
-      <span dir="ltr">
-        {{ hint }}
-      </span>
-    </small>
+    <g-hint v-if="hint" :hint="hint" location="chk" :variant="variant"/>
     <slot v-else name="hint"></slot>
-    <small v-if="message" class="c-chk__message" :class="messageClasses">
-      <span dir="ltr">
-        {{ message }}
-      </span>
-    </small>
+    <g-message v-if="message" location="chk" :variant="variant" :status="status"/>
     <slot v-else name="message"></slot>
   </div>
 `;
@@ -53,7 +45,7 @@ const Checkbox = {
       type: String,
       default: ''
     },
-    messageStatus: {
+    status: {
       type: String,
       default: '',
       validator(value) {
@@ -70,17 +62,15 @@ const Checkbox = {
     }
   },
   computed: {
+    variantType() {
+      return this.variant === 'radio' ? 'radio' : 'checkbox';
+    },
     classes() {
       return {
         [`c-chk__label--${this.variant}`]: this.variant,
         'is-checked': this.checked,
         'is-hidden': this.hidden,
         'c-chk__label--regular': this.group
-      };
-    },
-    hintClasses() {
-      return {
-        [`c-chk__hint--${this.variant}`]: this.variant
       };
     },
     messageClasses() {

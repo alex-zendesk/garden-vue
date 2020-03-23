@@ -3,11 +3,7 @@ const template = `
     <label v-if="label" class="c-txt__label" :for="name">
       {{ label }}
     </label>
-    <small v-if="hint" class="c-txt__hint">
-      <span dir="ltr">
-        {{ hint }}
-      </span>
-    </small>
+    <g-hint v-if="hint" :hint="hint" location="txt"/>
     <slot v-else name="hint"></slot>
     <input 
       type="text"
@@ -17,11 +13,7 @@ const template = `
       @input.trim="$emit('input', $event.target.value)"
       :placeholder="placeholder"
     />
-    <small v-if="message" class="c-txt__message" :class="messageClasses">
-      <span dir="ltr">
-        {{ message }}
-      </span>
-    </small>
+    <g-message v-if="message" location="txt" :status="status"/>
     <slot v-else name="message"></slot>
   </div>
 `;
@@ -65,7 +57,7 @@ const TextInput = {
       default: '',
       required: false
     },
-    messageStatus: {
+    status: {
       type: String,
       default: '',
       validator(value) {
@@ -77,11 +69,6 @@ const TextInput = {
     classes() {
       return {
         'c-txt--inline': this.inline
-      };
-    },
-    messageClasses() {
-      return {
-        [`c-txt__message--${this.messageStatus}`]: this.messageStatus
       };
     }
   }
