@@ -1,4 +1,4 @@
-const template = `
+  const template = `
   <div class="c-chk">
     <input class="c-chk__input" :id="name" type="checkbox" :disabled="disabled" :checked="checked" @change="change" />
     <label class="c-chk__label" :class="classes" :for="name">

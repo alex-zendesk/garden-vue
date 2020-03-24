@@ -1,5 +1,5 @@
 const template = `
-  <fieldset class="u-position-relative">
+  <fieldset>
     <div class="c-txt">
       <label v-if="label" class="c-txt__label" :for="name">
         {{ label }}

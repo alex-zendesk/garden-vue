@@ -64,7 +64,7 @@ const Button = {
         'c-btn--full': this.full,
         [`c-btn--${this.size}`]: this.size,
         'is-disabled': this.disabled || this.state === 'disabled',
-        [`c-btn--${this.state}`]: this.state
+        [`is-${this.state}`]: this.state
       };
     }
   }

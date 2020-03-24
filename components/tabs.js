@@ -2,7 +2,7 @@ const template = `
   <nav class="c-tab" :class="classes.tab">
     <ul class="c-tab__list" role="tablist">
       <li @click="change(tab)" 
-      v-for="tab in tabNames"
+      v-for="tab in Object.keys(this.$slots)"
       :key="tab"
       class="c-tab__list__item" 
       :class="listClasses(tab)" 
@@ -10,7 +10,7 @@ const template = `
         {{ tab }}
       </li>
     </ul>
-    <g-tab v-for="tab in tabNames" :active="isActive(tab)">
+    <g-tab v-for="tab in Object.keys(this.$slots)" :active="isActive(tab)">
       <slot :name="tab"></slot>
     </g-tab>
   </nav>
@@ -36,15 +36,15 @@ const Tabs = {
       return {
         tab: { 'c-tab--block': this.block },
         list: {
-          [`u-1/${this.tabNames.length}`]:
-            !this.block && this.full && this.tabNames.length
+          [`u-1/${Object.keys(this.$slots).length}`]:
+            !this.block && this.full && Object.keys(this.$slots).length
         }
       };
     }
   },
   data() {
     return {
-      active: this.tabNames[0]
+      active: Object.keys(this.$slots)[0]
     };
   },
   methods: {
