@@ -54,3 +54,7 @@ Things left to work and resolve.
 ##### 10. Text/ Textarea
 
 - needs more attention/ validate
+
+##### 10. Pagination
+
+- missing

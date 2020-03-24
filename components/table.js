@@ -2,12 +2,24 @@ const template = `
   <table class="c-table" :class="classes">
     <caption v-if="caption" class="c-table__caption">{{ caption }}</caption>
     <thead>
-      <g-table-row :header='true'>
-        <slot name="head"></slot>
+      <g-table-row 
+      v-if="headers.length" 
+      :header="true">
+        <g-table-cell v-for="(header,index) in headers" :key="index">
+          <slot :name="header"> {{ header }} </slot>
+        </g-table-cell>
+      </g-table-row>
+      <g-table-row v-else :header='true'>
+        <slot name="headers"></slot>
       </g-table-row>
     </thead>
     <tbody>
-      <slot name="body"></slot>
+      <g-table-row v-if="items.length">
+        <g-tabble-cell v-for="(item,index) in items" :key="index">
+          <slot :name="item"> {{ item }} </slot>
+        </g-tabble-cell>
+      </g-table-row>
+      <slot v-else name="items"></slot>
     </tbody>
   </table>
 `;
@@ -26,6 +38,14 @@ const Table = {
     caption: {
       type: String,
       default: ''
+    },
+    headers: {
+      type: Array,
+      default: []
+    },
+    items: {
+      type: Array,
+      default: []
     }
   },
 
