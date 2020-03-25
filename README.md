@@ -1,6 +1,6 @@
 ### Zendesk Garden - Vue Components
 
-Things left to work and resolve, on all components we should revisit slot implementation. and we should go throught components and validate them.
+Things left to work and resolve.
 
 #### Components:
 
@@ -13,16 +13,11 @@ Things left to work and resolve, on all components we should revisit slot implem
 ##### 2. Button, Button Group
 
 - add role attribute
-- remove state (hovered, focused, etc);
 - resolve icon button - `is-active`,`is-rotated`
 - if muted we should not emit click?
 
 ##### 3. Checkbox
 
-- Better solution for hint and messages for toggle and radio
-- change from methods to computed
-- disabled implementation
-- possible lightering of props
 - position of hint functionality
 
 ##### 4. Icon
@@ -34,20 +29,32 @@ Things left to work and resolve, on all components we should revisit slot implem
 - header icon implementation
 - meta functionality
 - media functionality
-- label maybe not needed change to slot
+- sizing, custom aswell
 
 ##### 6. Tabs
 
 - more closely how they work, what if they want to do a callout when clicking specific tab
 
-##### 7. Title
+##### 7. Dropdown
 
-- bold is not needed maybe even other prop since it will inherit
+- needs more attention
 
-##### 8. Toggle
+##### 8. Table
 
-- not needed anymore
+- needs more attention
 
 ##### 9. Tooltip
 
 - arrow positioning
+
+##### 10. Range
+
+- needs more attention
+
+##### 10. Text/ Textarea
+
+- needs more attention/ validate
+
+##### 10. Pagination
+
+- missing

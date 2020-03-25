@@ -26,6 +26,10 @@ const Tabs = {
     full: {
       type: Boolean,
       default: false
+    },
+    activeTab: {
+      type: String,
+      default: ''
     }
   },
   computed: {
@@ -44,7 +48,7 @@ const Tabs = {
   },
   data() {
     return {
-      active: Object.keys(this.$slots)[0]
+      active: this.activeTab
     };
   },
   methods: {

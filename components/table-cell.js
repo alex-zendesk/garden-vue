@@ -1,5 +1,5 @@
 const template = `
-  <td class="c-table__row__cell" :class="classes" :width="width" :colspan="span">
+  <td class="c-table__row__cell" :class="classes">
     <slot></slot>
   </td>
 `;
@@ -7,23 +7,30 @@ const template = `
 const TableCell = {
   template,
   props: {
-    span: {
-      type: Number,
-      default: 1
-    },
     truncate: {
       type: Boolean,
       default: false
     },
-    width: {
-      type: [String, Number],
-      default: 'auto'
+    min: {
+      type: Boolean,
+      default: false
+    },
+    overflow: {
+      type: Boolean,
+      deafult: false
+    },
+    sortable: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     classes() {
       return {
-        'c-table__row__cell-truncate': this.truncate
+        'c-table__row__cell--truncate': this.truncate,
+        'c-table__row__cell--min': this.min,
+        'c-table__row__cell--overflow': this.overflow,
+        'c-table__row__cell__sortable': this.sortable
       };
     }
   }
