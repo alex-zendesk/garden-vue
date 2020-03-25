@@ -42,7 +42,7 @@ export const Garden = {
   'g-hint': Hint,
   'g-message': Message,
   'g-breadcrumb': Breadcrumb,
-  'g-breacrumb-item': BreadcrumbItem,
+  'g-breadcrumb-item': BreadcrumbItem,
   'g-tag': Tag
 };
 

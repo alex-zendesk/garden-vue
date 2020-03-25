@@ -8,6 +8,7 @@ const template = `
     v-show="canClose" 
     @click="close"
     class="c-tag__remove" 
+    aria-label="Close Tag"
     tabindex="-1">
   </button>
 </div>

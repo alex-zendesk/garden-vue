@@ -1,6 +1,6 @@
 const template = `
   <div class="c-callout" :class="classes">
-    <button v-show="canClose" class="c-callout__close" @click="close"></button>
+    <button v-show="canClose" class="c-callout__close" aria-label="Close Notification" @click="close"></button>
     <strong v-if="title" class="c-callout__title">
         <span dir="ltr">{{ title }}</span>
     </strong>

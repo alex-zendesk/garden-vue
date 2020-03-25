@@ -8,7 +8,8 @@ const template = `
         <button 
         aria-label="close" 
         class="c-dialog__close" 
-        @click="close">
+        @click="close"
+        aria-label="Close Modal">
         </button>
       </header>
       <div class="c-dialog__body">
